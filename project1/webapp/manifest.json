@@ -87,15 +87,24 @@
       },
       "routes": [
         {
-          "name": "RouteMain",
-          "pattern": ":?query:",
-          "target": ["TargetMain"]
+          "name": "master",
+          "pattern": "",
+          "target": "master"
+        },
+        {
+          "name": "object",
+          "pattern": "Orders/{objectId}",
+          "target": ["master", "object"]
         }
       ],
       "targets": {
-        "TargetMain": {
-          "id": "Main",
-          "name": "Main"
+        "master": {
+          "id": "master",
+          "name": "Master"
+        },
+        "object": {
+          "id": "detail",
+          "name": "Detail"
         }
       }
     },
