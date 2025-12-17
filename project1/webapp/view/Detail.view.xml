@@ -1,0 +1,8 @@
+<mvc:View controllerName="project1.controller.Master"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <Page >  <Text text="detail"></Text></Page>
+  
+</mvc:View>

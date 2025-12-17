@@ -1,13 +1,13 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"project1/controller/Main.controller"
+	"project1/controller/Master.controller"
 ], function (Controller) {
 	"use strict";
 
-	QUnit.module("Main Controller");
+	QUnit.module("Master Controller");
 
-	QUnit.test("I should test the Main controller", function (assert) {
+	QUnit.test("I should test the Master controller", function (assert) {
 		var oAppController = new Controller();
 		oAppController.onInit();
 		assert.ok(oAppController);

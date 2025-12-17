@@ -1,0 +1,43 @@
+<mvc:View controllerName="project1.controller.Master"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    >
+    <Page title="{i18n>title}">
+        <List
+            id="ODataV2List" 
+            items="{ODataV2>/Products}">
+        <items>
+            <ObjectListItem 
+                type="Navigation"
+                press=".onProductPress"
+                core:require="{
+                            Currency: 'sap/ui/model/type/Currency'
+                        }"
+                title="{ODataV2>Name}"
+                number="{
+                        parts: [
+                            'ODataV2>Price',
+                            'view>/currency'
+                        ],
+                        type: 'Currency',
+                        formatOptions: {
+                            showMeasure: false
+                        }}"
+                numberUnit="{view>/currency}">
+                <attributes>
+                    <ObjectAttribute text="{ODataV2>Description}" />
+                    <ObjectAttribute  text="{
+                        path: 'ODataV2>ReleaseDate',
+                        type: 'sap.ui.model.type.Date',
+                        formatOptions: {pattern: 'yyyy',
+                        UTC: true}
+                        }"/>
+                </attributes>
+            </ObjectListItem>
+        </items>
+    </List>
+    </Page>
+</mvc:View>
