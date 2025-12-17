@@ -5,6 +5,10 @@ sap.ui.define([
 
   return Controller.extend("project1.controller.BaseController", {
       onInit() {
+      },
+      
+      getModel(oModel){
+        return this.getView().getModel(oModel);
       }
   });
 });

@@ -1,8 +1,47 @@
-<mvc:View controllerName="project1.controller.Master"
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="project1.controller.Detail"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:f="sap.f">
-    <Page >  <Text text="detail"></Text></Page>
-  
+     <Page 
+        showNavButton="true">
+        <ObjectHeader title="{ODataV2>Name}"/>
+        <form:SimpleForm >
+            <Label text="{i18n>nameLabelText}"/>
+            <Text text="{ODataV2>Name}"/>
+            <Label text="{i18n>descriptionLabelText}"/>
+            <Text text="{ODataV2>Description}"/>
+            <Label text="{i18n>releaseDateLabelText}"/>
+            <Text 
+                text="{
+                    path: 'ODataV2>ReleaseDate',
+                    type: 'sap.ui.model.type.Date',
+                    formatOptions: {
+                        pattern: 'yyyy',
+                        UTC: true}
+                    }"
+               />
+            <Label text="{i18n>ratingLabelText}"/>
+            <RatingIndicator 
+                maxValue="5"  
+                value="{ODataV2>Rating}"
+                iconSize="1rem"
+                editable="false"
+                displayOnly="true"
+                change=".onRatingChange"
+                fieldGroupIds="productUpdate"/>
+            <Label text="{i18n>priceLabelText}"/>
+            <Text
+                text="{
+                    parts: [
+                        { path: 'ODataV2>Price' },
+                        { path: 'view>/currency' }
+                    ],
+                    type: 'sap.ui.model.type.Currency',
+                    formatOptions: {
+                        showMeasure: true
+                    }
+                }"/>
+        </form:SimpleForm>
+    </Page>
 </mvc:View>
