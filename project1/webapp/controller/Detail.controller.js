@@ -16,7 +16,9 @@ sap.ui.define([
       _onObjectMatched(oEvent){
         var oArguments = oEvent.getParameter("arguments");
 		    this._sObjectId = oArguments.objectId;
-        // this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+        if (this.getModel("appView").getProperty("/layout") !== "MidColumnFullScreen") {
+          this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+        }
         this.getView().bindElement({
           path: `/Products(${this._sObjectId})`,
           model: "ODataV2",

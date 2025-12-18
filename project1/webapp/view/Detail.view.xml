@@ -3,8 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:f="sap.f">
-     <Page 
-        showNavButton="true">
+     <Page>
         <ObjectHeader title="{ODataV2>Name}"/>
         <form:SimpleForm >
             <Label text="{i18n>nameLabelText}"/>
