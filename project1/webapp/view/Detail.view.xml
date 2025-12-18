@@ -4,6 +4,20 @@
     xmlns="sap.m"
     xmlns:f="sap.f">
      <Page>
+        <Toolbar>
+            <ToolbarSpacer />
+            <HBox >
+                <Button 
+                    icon="sap-icon://exit-full-screen" 
+                    press=".toggleFullScreen"
+                    visible="{appView>/actionButtonsInfo/midColumn/fullScreen}"/>
+                <Button 
+                    icon="sap-icon://full-screen" 
+                    press=".toggleFullScreen"
+                    visible="{=!${appView>/actionButtonsInfo/midColumn/fullScreen} }"/>
+            </HBox>
+            <Button icon="sap-icon://decline" press=".onCloseProductButtonPress"/>
+        </Toolbar>
         <ObjectHeader title="{ODataV2>Name}"/>
         <form:SimpleForm >
             <Label text="{i18n>nameLabelText}"/>

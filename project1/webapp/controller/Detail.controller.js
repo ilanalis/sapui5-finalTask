@@ -24,6 +24,22 @@ sap.ui.define([
           model: "ODataV2",
           parameters: { expand: "Supplier" },
         });
+      },
+
+      onCloseProductButtonPress(){
+        this.getModel("appView").setProperty("/layout", "OneColumn");
+        this.getOwnerComponent().getRouter().navTo("")
+      },
+
+      toggleFullScreen(){
+       var bFullScreen = this.getModel("appView").getProperty("/actionButtonsInfo/midColumn/fullScreen");
+        this.getModel("appView").setProperty("/actionButtonsInfo/midColumn/fullScreen", !bFullScreen);
+        if (!bFullScreen) {
+          this.getModel("appView").setProperty("/previousLayout", this.getModel("appView").getProperty("/layout"));
+          this.getModel("appView").setProperty("/layout", "MidColumnFullScreen");
+        } else {
+          this.getModel("appView").setProperty("/layout",  this.getModel("appView").getProperty("/previousLayout"));
+        }
       }
   });
 });

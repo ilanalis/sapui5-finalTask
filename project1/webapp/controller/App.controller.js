@@ -8,6 +8,12 @@ sap.ui.define([
       onInit() {
         const oViewModel = new JSONModel({
 				  layout : "OneColumn",
+				  previousLayout : "",
+          actionButtonsInfo : {
+					midColumn : {
+						fullScreen : false
+					}
+				}
 			  });
         this.getView().setModel(oViewModel, "appView");
       }
