@@ -63,7 +63,11 @@
       },
       "ODataV2": {
         "dataSource": "ODataV2",
-        "type": "sap.ui.model.odata.v2.ODataModel"
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultUpdateMethod": "PUT"
+        }
       }
     },
     "resources": {
@@ -106,7 +110,7 @@
           "id": "detail",
           "name": "Detail",
           "level": 1,
-					"controlAggregation": "midColumnPages"
+          "controlAggregation": "midColumnPages"
         }
       }
     },

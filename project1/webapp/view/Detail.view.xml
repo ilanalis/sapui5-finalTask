@@ -16,45 +16,132 @@
                     press=".toggleFullScreen"
                     visible="{=!${appView>/actionButtonsInfo/midColumn/fullScreen} }"/>
             </HBox>
-            <Button icon="sap-icon://decline" press=".onCloseProductButtonPress"/>
+            <Button icon="sap-icon://decline" press=".onCloseProductButtonPress"  tooltip="{i18n>closeTooltipText}"/>
         </Toolbar>
-        <ObjectHeader title="{ODataV2>Name}"/>
-        <form:SimpleForm >
-            <Label text="{i18n>nameLabelText}"/>
-            <Text text="{ODataV2>Name}"/>
-            <Label text="{i18n>descriptionLabelText}"/>
-            <Text text="{ODataV2>Description}"/>
-            <Label text="{i18n>releaseDateLabelText}"/>
-            <Text 
-                text="{
-                    path: 'ODataV2>ReleaseDate',
-                    type: 'sap.ui.model.type.Date',
-                    formatOptions: {
-                        pattern: 'yyyy',
-                        UTC: true}
+        <ObjectHeader id="objHeader"/>
+        <form:SimpleForm 
+            id="productForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="4"
+            labelSpanS="12"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1">
+            <Label 
+                text="{i18n>nameLabelText}"
+                labelFor="productNameInput"/>
+            <VBox>
+                <Text 
+                    text="{ODataV2>Name}" 
+                    visible="{= !${view>/isEditMode}}"/>
+                <Input  
+                    id="productNameInput"
+                    value="{ODataV2>Name}" 
+                    visible="{view>/isEditMode}" 
+                    required="true"
+                    placeholder="{i18n>productFormPlaceholderName}"
+                    valueStateText="{i18n>textInputValueStateErrorText}"
+                    liveChange=".onTextInputLiveChange"
+                    fieldGroupIds="productUpdate"/>
+            </VBox>
+            <Label 
+                text="{i18n>descriptionLabelText}"
+                labelFor="productDescriptionInput"/>
+            <VBox>
+                <Text text="{ODataV2>Description}" visible="{= !${view>/isEditMode}}"/>
+                <Input 
+                    id="productDescriptionInput"
+                    value="{ODataV2>Description}" 
+                    visible="{view>/isEditMode}"
+                    required="true"
+                    placeholder="{i18n>productFormPlaceholderDescription}"
+                    valueStateText="{i18n>textInputValueStateErrorText}"
+                    liveChange=".onTextInputLiveChange"
+                    fieldGroupIds="productUpdate"/>
+            </VBox>
+            <Label 
+                text="{i18n>releaseDateLabelText}"  
+                labelFor="productReleaseDateInput"/>
+            <VBox>
+                <Text 
+                    text="{
+                        path: 'ODataV2>ReleaseDate',
+                        type: 'sap.ui.model.type.Date',
+                        formatOptions: {
+                            pattern: 'yyyy',
+                            UTC: true}
+                        }"
+                    visible="{= !${view>/isEditMode}}"
+                    />
+                <DatePicker
+                    id="productReleaseDateInput"
+                    required="true" 
+                    value="{
+                        path: 'ODataV2>ReleaseDate',
+                        type: 'sap.ui.model.type.Date',  
+                        formatOptions: {
+                                pattern: 'yyyy-MM-dd'        
+                        }
                     }"
-               />
-            <Label text="{i18n>ratingLabelText}"/>
+                    visible="{view>/isEditMode}"
+                    placeholder="{i18n>productFormPlaceholderReleaseDate}"
+                    valueStateText="{i18n>datePickerInputValueStateErrorText}"
+                    change=".onReleaseDateChange"
+                    fieldGroupIds="productUpdate"/>
+            </VBox>
+            <Label 
+                text="{i18n>ratingLabelText}"
+                labelFor="productRatingInput"/>
             <RatingIndicator 
+                id="productRatingInput"
                 maxValue="5"  
                 value="{ODataV2>Rating}"
                 iconSize="1rem"
-                editable="false"
-                displayOnly="true"
+                editable="{view>/isEditMode}"
+                displayOnly="{= !${view>/isEditMode}}"
                 change=".onRatingChange"
                 fieldGroupIds="productUpdate"/>
-            <Label text="{i18n>priceLabelText}"/>
-            <Text
-                text="{
-                    parts: [
-                        { path: 'ODataV2>Price' },
-                        { path: 'view>/currency' }
-                    ],
-                    type: 'sap.ui.model.type.Currency',
-                    formatOptions: {
-                        showMeasure: true
-                    }
-                }"/>
+            <Label 
+                text="{i18n>priceLabelText}"
+                labelFor="productPriceInput"/>
+            <VBox>
+                <Text
+                    text="{
+                        parts: [
+                            { path: 'ODataV2>Price' },
+                            { path: 'view>/currency' }
+                        ],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {
+                            showMeasure: true
+                        }
+                    }"
+                    visible="{= !${view>/isEditMode}}"/>
+                <Input
+                    id="productPriceInput"
+                    value="{ODataV2>Price}"
+                    visible="{view>/isEditMode}"
+                    required="true" 
+                    type="Number"
+                    placeholder="{i18n>productFormPlaceholderPrice}"
+                    valueStateText="{i18n>priceInputValueStateErrorText}"
+                    liveChange=".onPriceInputLiveChange"
+                    fieldGroupIds="productUpdate"/>
+            </VBox>
+            <Label/>
+            <HBox
+                visible="{view>/isEditMode}"
+                justifyContent="End"
+                width="100%"
+                class="sapUiSmallMarginTop">
+                <Button
+                    text="{i18n>addButtonText}"
+                    type="Emphasized"
+                    press=".onAddButtonPress"/>
+            </HBox>
         </form:SimpleForm>
     </Page>
 </mvc:View>

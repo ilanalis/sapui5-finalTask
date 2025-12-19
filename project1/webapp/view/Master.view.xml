@@ -13,6 +13,10 @@
                     placeholder="{i18n>searchFieldPlaceholderText}"
                     liveChange=".onFilterProductsByProductName"
                     search=".onFilterProductsByProductName"/>
+                <Button 
+                    icon="sap-icon://add" 
+                    press=".onAddNewProductButtonPress"
+                    tooltip="{i18n>addProductTooltipText}"/>
             </Toolbar>
         </subHeader>
         <List
