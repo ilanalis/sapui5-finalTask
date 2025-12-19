@@ -32,7 +32,9 @@
                     visible="{= ${view>/isEditMode}  &amp;&amp; !${view>/isNewProduct}}"
                     tooltip="{i18n>buttonCancelChanges}"/>
             </HBox>
-
+            <Button 
+                icon="sap-icon://delete"
+                press=".onDeleteProduct"/>
         </Toolbar>
         <ObjectHeader id="objHeader"/>
         <form:SimpleForm 

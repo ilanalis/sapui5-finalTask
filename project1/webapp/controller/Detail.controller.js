@@ -35,14 +35,14 @@ sap.ui.define(
             "TwoColumnsMidExpanded"
           );
         }
-
-        var oArguments = oEvent.getParameter("arguments");
+        const oModel = this.getModel("ODataV2");
+        const oArguments = oEvent.getParameter("arguments");
         this._sObjectId = oArguments.objectId;
 
         if (this._sObjectId === "new") {
           this._openCreateProduct();
           this._setTitle(this._oResourceBundle.getText("addNewProduct"));
-        } else if (this._sObjectId) {
+        } else {
           this._openExistingProduct();
           const oCtx = this.getView().getBindingContext("ODataV2");
           const sProductName = oCtx.getProperty("Name");
@@ -85,6 +85,35 @@ sap.ui.define(
 
       onEditProduct() {
         this._oViewModel.setProperty("/isEditMode", true);
+      },
+
+      onDeleteProduct() {
+        MessageBox.confirm(
+          this._oResourceBundle.getText("deleteRecordsConfirmationText"),
+          {
+            actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+            emphasizedAction: MessageBox.Action.YES,
+            onClose: (sAction) => {
+              if (sAction === MessageBox.Action.YES) {
+                this._deleteProduct();
+              }
+            },
+          }
+        );
+      },
+
+      async _deleteProduct() {
+        try {
+          const oModel = this.getModel("ODataV2");
+          const oCtx = this.getView().getBindingContext("ODataV2");
+          if (oCtx.isTransient()) {
+            const oModel = this.getModel("ODataV2");
+            oModel.resetChanges();
+          } else {
+            oModel.remove(oCtx.getPath());
+          }
+          this._closeSecondColumn();
+        } catch {}
       },
 
       onCancelChanges() {
@@ -152,11 +181,13 @@ sap.ui.define(
       },
 
       async onSaveButtonPress() {
+        const oModel = this.getModel("ODataV2");
+
         if (!this._validateForm()) {
           return;
         }
 
-        if (this._sObjectId === "new") {
+        if (oModel.getProperty("/isNewProduct")) {
           this._submitNewProduct();
         } else {
           this._submitEditing();
@@ -204,6 +235,10 @@ sap.ui.define(
       },
 
       onCloseProductButtonPress() {
+        this._closeSecondColumn();
+      },
+
+      _closeSecondColumn() {
         this._oViewModel.setProperty("/isEditMode", false);
         this.getModel("appView").setProperty("/layout", "OneColumn");
         this.getOwnerComponent().getRouter().navTo("master");
