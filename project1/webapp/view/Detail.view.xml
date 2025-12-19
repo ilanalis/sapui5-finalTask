@@ -4,23 +4,35 @@
     xmlns="sap.m"
     xmlns:f="sap.f">
      <Page>
+     <Bar>
+     <contentRight>
+        <HBox >
+            <Button 
+                icon="sap-icon://exit-full-screen" 
+                press=".toggleFullScreen"
+                visible="{appView>/actionButtonsInfo/midColumn/fullScreen}"/>
+            <Button 
+                icon="sap-icon://full-screen" 
+                press=".toggleFullScreen"
+                visible="{= !${appView>/actionButtonsInfo/midColumn/fullScreen} }"/>
+        </HBox>
+        <Button icon="sap-icon://decline" press=".onCloseProductButtonPress"  tooltip="{i18n>closeTooltipText}"/>
+     </contentRight>
+     </Bar>
         <Toolbar>
             <ToolbarSpacer />
             <HBox >
                 <Button 
                     icon="sap-icon://edit"
-                    press=".editProduct"
+                    press=".onEditProduct"
                     visible="{= !${view>/isEditMode}}"/>
                 <Button 
-                    icon="sap-icon://exit-full-screen" 
-                    press=".toggleFullScreen"
-                    visible="{appView>/actionButtonsInfo/midColumn/fullScreen}"/>
-                <Button 
-                    icon="sap-icon://full-screen" 
-                    press=".toggleFullScreen"
-                    visible="{= !${appView>/actionButtonsInfo/midColumn/fullScreen} }"/>
+                    icon="sap-icon://sys-cancel"
+                    press=".onCancelChanges"
+                    visible="{= ${view>/isEditMode}  &amp;&amp; !${view>/isNewProduct}}"
+                    tooltip="{i18n>buttonCancelChanges}"/>
             </HBox>
-            <Button icon="sap-icon://decline" press=".onCloseProductButtonPress"  tooltip="{i18n>closeTooltipText}"/>
+
         </Toolbar>
         <ObjectHeader id="objHeader"/>
         <form:SimpleForm 

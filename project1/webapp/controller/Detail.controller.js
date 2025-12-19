@@ -16,6 +16,7 @@ sap.ui.define(
         this._oViewModel = new JSONModel({
           currency: "EUR",
           isEditMode: false,
+          isNewProduct: false,
         });
         this.getView().setModel(this._oViewModel, "view");
         const oRouter = this.getOwnerComponent().getRouter();
@@ -56,6 +57,7 @@ sap.ui.define(
 
       _openCreateProduct() {
         this._oViewModel.setProperty("/isEditMode", true);
+        this._oViewModel.setProperty("/isNewProduct", true);
         const oModel = this.getModel("ODataV2");
         const oNewProductCntx = oModel.createEntry("/Products");
 
@@ -71,17 +73,22 @@ sap.ui.define(
       },
 
       _openExistingProduct() {
+        this._oViewModel.setProperty("/isEditMode", false);
+        this._oViewModel.setProperty("/isNewProduct", false);
         const oModel = this.getModel("ODataV2");
         oModel.resetChanges();
-        this._oViewModel.setProperty("/isEditMode", false);
         this.getView().bindElement({
           path: `/Products(${this._sObjectId})`,
           model: "ODataV2",
         });
       },
 
-      editProduct() {
+      onEditProduct() {
         this._oViewModel.setProperty("/isEditMode", true);
+      },
+
+      onCancelChanges() {
+        this._oViewModel.setProperty("/isEditMode", false);
       },
 
       onTextInputLiveChange(oEvent) {
