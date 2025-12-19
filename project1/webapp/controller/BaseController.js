@@ -7,5 +7,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], (Controller) => {
     getModel(oModel) {
       return this.getView().getModel(oModel);
     },
+
+    submitODataChanges(oModel) {
+      return new Promise((resolve, reject) => {
+        oModel.submitChanges({
+          success: resolve,
+          error: reject,
+        });
+      });
+    },
   });
 });

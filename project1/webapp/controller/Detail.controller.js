@@ -57,20 +57,31 @@ sap.ui.define(
       _openCreateProduct() {
         this._oViewModel.setProperty("/isEditMode", true);
         const oModel = this.getModel("ODataV2");
-        const oNewProductCntx = oModel.createEntry("/Products").getPath();
+        const oNewProductCntx = oModel.createEntry("/Products");
 
         this.getView().bindElement({
-          path: oNewProductCntx,
+          path: oNewProductCntx.getPath(),
           model: "ODataV2",
         });
       },
 
+      onExit() {
+        const oModel = this.getModel("ODataV2");
+        oModel.resetChanges();
+      },
+
       _openExistingProduct() {
+        const oModel = this.getModel("ODataV2");
+        oModel.resetChanges();
         this._oViewModel.setProperty("/isEditMode", false);
         this.getView().bindElement({
           path: `/Products(${this._sObjectId})`,
           model: "ODataV2",
         });
+      },
+
+      editProduct() {
+        this._oViewModel.setProperty("/isEditMode", true);
       },
 
       onTextInputLiveChange(oEvent) {
@@ -133,26 +144,49 @@ sap.ui.define(
         });
       },
 
-      async onAddButtonPress() {
-        const oModel = this.getModel("ODataV2");
-
+      async onSaveButtonPress() {
         if (!this._validateForm()) {
           return;
         }
 
-        try {
-          await oModel.submitChanges({
-            success: () => {
-              this._oViewModel.setProperty("/isEditMode", false);
-              const oCtx = this.getView().getBindingContext("ODataV2");
-              const sId = oCtx.getProperty("ID");
+        if (this._sObjectId === "new") {
+          this._submitNewProduct();
+        } else {
+          this._submitEditing();
+        }
+      },
 
-              this.getOwnerComponent()
-                .getRouter()
-                .navTo("object", { objectId: sId });
-              this._showMessageToast("productCreatedSuccess");
-            },
-          });
+      async _submitNewProduct() {
+        const oModel = this.getModel("ODataV2");
+
+        try {
+          await this.submitODataChanges(oModel);
+          this._oViewModel.setProperty("/isEditMode", false);
+          const oCtx = this.getView().getBindingContext("ODataV2");
+          const sId = oCtx.getProperty("ID");
+          this.getOwnerComponent()
+            .getRouter()
+            .navTo("object", { objectId: sId });
+          this._showMessageToast("productCreatedSuccess");
+        } catch (oError) {
+          MessageBox.error(oError.message);
+        }
+      },
+
+      async _submitEditing() {
+        const oModel = this.getModel("ODataV2");
+        if (!oModel.hasPendingChanges()) {
+          this._showMessageToast("noChangesToSaveMessageText");
+          return;
+        }
+
+        try {
+          await this.submitODataChanges(oModel);
+          this._oViewModel.setProperty("/isEditMode", false);
+          const oCtx = this.getView().getBindingContext("ODataV2");
+          const sProductName = oCtx.getProperty("Name");
+          this._setTitle(sProductName);
+          this._showMessageToast("productUpdatedSuccess");
         } catch (oError) {
           MessageBox.error(oError.message);
         }
@@ -163,8 +197,9 @@ sap.ui.define(
       },
 
       onCloseProductButtonPress() {
+        this._oViewModel.setProperty("/isEditMode", false);
         this.getModel("appView").setProperty("/layout", "OneColumn");
-        this.getOwnerComponent().getRouter().navTo("");
+        this.getOwnerComponent().getRouter().navTo("master");
       },
 
       toggleFullScreen() {
