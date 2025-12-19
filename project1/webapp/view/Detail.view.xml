@@ -21,17 +21,10 @@
      </Bar>
         <Toolbar>
             <ToolbarSpacer />
-            <HBox >
-                <Button 
-                    icon="sap-icon://edit"
-                    press=".onEditProduct"
-                    visible="{= !${view>/isEditMode}}"/>
-                <Button 
-                    icon="sap-icon://sys-cancel"
-                    press=".onCancelChanges"
-                    visible="{= ${view>/isEditMode}  &amp;&amp; !${view>/isNewProduct}}"
-                    tooltip="{i18n>buttonCancelChanges}"/>
-            </HBox>
+            <Button 
+                icon="sap-icon://edit"
+                press=".onEditProduct"
+                visible="{= !${view>/isEditMode}}"/>
             <Button 
                 icon="sap-icon://delete"
                 press=".onDeleteProduct"/>
@@ -155,10 +148,18 @@
                 justifyContent="End"
                 width="100%"
                 class="sapUiSmallMarginTop">
+                
                 <Button
                     text="{i18n>saveButtonText}"
                     type="Emphasized"
-                    press=".onSaveButtonPress"/>
+                    press=".onSaveButtonPress"
+                    />
+                <Button 
+                    text="{i18n>cancelButtonText}"
+                    press=".onCancelChanges"
+                    visible="{= ${view>/isEditMode}  &amp;&amp; !${view>/isNewProduct}}"
+                    tooltip="{i18n>buttonCancelChanges}"
+                    class="sapUiSmallMarginBegin"/>
             </HBox>
         </form:SimpleForm>
     </Page>
