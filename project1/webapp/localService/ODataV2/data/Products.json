@@ -1,0 +1,422 @@
+[
+  {
+    "ID": 1,
+    "Name": "Pride and Prejudice",
+    "Description": "A romantic novel of manners.",
+    "ReleaseDate": "/Date(-493192800000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 12.99,
+    "Supplier": {
+      "ID": 1,
+      "Concurrency": 0,
+      "Name": "Penguin Books",
+      "Address": {
+        "Street": "123 Main St",
+        "City": "London",
+        "State": "",
+        "ZipCode": "SW1A1AA",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 2,
+    "Name": "1984",
+    "Description": "Dystopian social science fiction novel.",
+    "ReleaseDate": "/Date(-640411200000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 15.5,
+    "Supplier": {
+      "ID": 2,
+      "Concurrency": 0,
+      "Name": "HarperCollins",
+      "Address": {
+        "Street": "456 Elm St",
+        "City": "New York",
+        "State": "NY",
+        "ZipCode": "10001",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 3,
+    "Name": "The Great Gatsby",
+    "Description": "A tale of the Jazz Age.",
+    "ReleaseDate": "/Date(-1377884400000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 14.99,
+    "Supplier": {
+      "ID": 1,
+      "Concurrency": 0,
+      "Name": "Penguin Books",
+      "Address": {
+        "Street": "123 Main St",
+        "City": "London",
+        "State": "",
+        "ZipCode": "SW1A1AA",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 4,
+    "Name": "Moby Dick",
+    "Description": "A sailor's obsessive quest for a giant white whale.",
+    "ReleaseDate": "/Date(-3705057600000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 18.2,
+    "Supplier": {
+      "ID": 3,
+      "Concurrency": 0,
+      "Name": "Vintage",
+      "Address": {
+        "Street": "789 Oak St",
+        "City": "San Francisco",
+        "State": "CA",
+        "ZipCode": "94102",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 5,
+    "Name": "War and Peace",
+    "Description": "Epic novel chronicling the French invasion of Russia.",
+    "ReleaseDate": "/Date(-3337968000000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 22.4,
+    "Supplier": {
+      "ID": 2,
+      "Concurrency": 0,
+      "Name": "HarperCollins",
+      "Address": {
+        "Street": "456 Elm St",
+        "City": "New York",
+        "State": "NY",
+        "ZipCode": "10001",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 6,
+    "Name": "Crime and Punishment",
+    "Description": "A psychological drama about moral dilemmas.",
+    "ReleaseDate": "/Date(-3410712000000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 16.75,
+    "Supplier": {
+      "ID": 1,
+      "Concurrency": 0,
+      "Name": "Penguin Books",
+      "Address": {
+        "Street": "123 Main St",
+        "City": "London",
+        "State": "",
+        "ZipCode": "SW1A1AA",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 7,
+    "Name": "Dracula",
+    "Description": "Gothic horror novel featuring the vampire count.",
+    "ReleaseDate": "/Date(-2247926400000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 13.5,
+    "Supplier": {
+      "ID": 4,
+      "Concurrency": 0,
+      "Name": "Oxford Press",
+      "Address": {
+        "Street": "10 High St",
+        "City": "Oxford",
+        "State": "",
+        "ZipCode": "OX1 4BH",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 8,
+    "Name": "The Trial",
+    "Description": "Novel about a man arrested and prosecuted by an inaccessible authority.",
+    "ReleaseDate": "/Date(-1450000000000)/",
+    "DiscontinuedDate": null,
+    "Rating": 3,
+    "Price": 11.99,
+    "Supplier": {
+      "ID": 2,
+      "Concurrency": 0,
+      "Name": "HarperCollins",
+      "Address": {
+        "Street": "456 Elm St",
+        "City": "New York",
+        "State": "NY",
+        "ZipCode": "10001",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 9,
+    "Name": "Wuthering Heights",
+    "Description": "A tale of love and despair on the English moors.",
+    "ReleaseDate": "/Date(-4269926400000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 14.0,
+    "Supplier": {
+      "ID": 5,
+      "Concurrency": 0,
+      "Name": "Random House",
+      "Address": {
+        "Street": "22 Baker St",
+        "City": "Berlin",
+        "State": "",
+        "ZipCode": "10115",
+        "Country": "Germany"
+      }
+    }
+  },
+  {
+    "ID": 10,
+    "Name": "Jane Eyre",
+    "Description": "A novel about a governess's life and love.",
+    "ReleaseDate": "/Date(-4269926400000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 12.99,
+    "Supplier": {
+      "ID": 5,
+      "Concurrency": 0,
+      "Name": "Random House",
+      "Address": {
+        "Street": "22 Baker St",
+        "City": "Berlin",
+        "State": "",
+        "ZipCode": "10115",
+        "Country": "Germany"
+      }
+    }
+  },
+  {
+    "ID": 11,
+    "Name": "To Kill a Mockingbird",
+    "Description": "A story about racial injustice in the American South.",
+    "ReleaseDate": "/Date(-304250400000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 16.0,
+    "Supplier": {
+      "ID": 4,
+      "Concurrency": 0,
+      "Name": "Oxford Press",
+      "Address": {
+        "Street": "10 High St",
+        "City": "Oxford",
+        "State": "",
+        "ZipCode": "OX1 4BH",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 12,
+    "Name": "Fahrenheit 451",
+    "Description": "A future where books are forbidden and burned.",
+    "ReleaseDate": "/Date(-527376000000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 17.8,
+    "Supplier": {
+      "ID": 3,
+      "Concurrency": 0,
+      "Name": "Vintage",
+      "Address": {
+        "Street": "789 Oak St",
+        "City": "San Francisco",
+        "State": "CA",
+        "ZipCode": "94102",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 13,
+    "Name": "The Odyssey",
+    "Description": "Ancient Greek epic poem of Odysseus's journey.",
+    "ReleaseDate": "/Date(-8958748800000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 25.0,
+    "Supplier": {
+      "ID": 3,
+      "Concurrency": 0,
+      "Name": "Vintage",
+      "Address": {
+        "Street": "789 Oak St",
+        "City": "San Francisco",
+        "State": "CA",
+        "ZipCode": "94102",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 14,
+    "Name": "Frankenstein",
+    "Description": "A creature created by a scientist seeks belonging.",
+    "ReleaseDate": "/Date(-5673004800000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 14.5,
+    "Supplier": {
+      "ID": 2,
+      "Concurrency": 0,
+      "Name": "HarperCollins",
+      "Address": {
+        "Street": "456 Elm St",
+        "City": "New York",
+        "State": "NY",
+        "ZipCode": "10001",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 15,
+    "Name": "Don Quixote",
+    "Description": "A noble who reads too many chivalric romances.",
+    "ReleaseDate": "/Date(-11200089600000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 28.99,
+    "Supplier": {
+      "ID": 3,
+      "Concurrency": 0,
+      "Name": "Vintage",
+      "Address": {
+        "Street": "789 Oak St",
+        "City": "San Francisco",
+        "State": "CA",
+        "ZipCode": "94102",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 16,
+    "Name": "One Hundred Years of Solitude",
+    "Description": "Magical realism classic.",
+    "ReleaseDate": "/Date(-840134400000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 17.5,
+    "Supplier": {
+      "ID": 4,
+      "Concurrency": 0,
+      "Name": "Oxford Press",
+      "Address": {
+        "Street": "10 High St",
+        "City": "Oxford",
+        "State": "",
+        "ZipCode": "OX1 4BH",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 17,
+    "Name": "The Picture of Dorian Gray",
+    "Description": "A man who remains young while his portrait ages.",
+    "ReleaseDate": "/Date(-2408985600000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 13.9,
+    "Supplier": {
+      "ID": 3,
+      "Concurrency": 0,
+      "Name": "Vintage",
+      "Address": {
+        "Street": "789 Oak St",
+        "City": "San Francisco",
+        "State": "CA",
+        "ZipCode": "94102",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 18,
+    "Name": "Heart of Darkness",
+    "Description": "A voyage up the Congo River.",
+    "ReleaseDate": "/Date(-2228302800000)/",
+    "DiscontinuedDate": null,
+    "Rating": 3,
+    "Price": 10.5,
+    "Supplier": {
+      "ID": 4,
+      "Concurrency": 0,
+      "Name": "Oxford Press",
+      "Address": {
+        "Street": "10 High St",
+        "City": "Oxford",
+        "State": "",
+        "ZipCode": "OX1 4BH",
+        "Country": "UK"
+      }
+    }
+  },
+  {
+    "ID": 19,
+    "Name": "Brave New World",
+    "Description": "A futuristic society based on scientific control.",
+    "ReleaseDate": "/Date(-1226995200000)/",
+    "DiscontinuedDate": null,
+    "Rating": 5,
+    "Price": 15.99,
+    "Supplier": {
+      "ID": 2,
+      "Concurrency": 0,
+      "Name": "HarperCollins",
+      "Address": {
+        "Street": "456 Elm St",
+        "City": "New York",
+        "State": "NY",
+        "ZipCode": "10001",
+        "Country": "USA"
+      }
+    }
+  },
+  {
+    "ID": 20,
+    "Name": "Walden",
+    "Description": "Reflections on simple living in natural surroundings.",
+    "ReleaseDate": "/Date(-3919420800000)/",
+    "DiscontinuedDate": null,
+    "Rating": 4,
+    "Price": 11.2,
+    "Supplier": {
+      "ID": 2,
+      "Concurrency": 0,
+      "Name": "HarperCollins",
+      "Address": {
+        "Street": "456 Elm St",
+        "City": "New York",
+        "State": "NY",
+        "ZipCode": "10001",
+        "Country": "USA"
+      }
+    }
+  }
+]
