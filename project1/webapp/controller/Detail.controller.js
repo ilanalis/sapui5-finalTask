@@ -35,10 +35,9 @@ sap.ui.define(
             "TwoColumnsMidExpanded"
           );
         }
-        const oModel = this.getModel("ODataV2");
         const oArguments = oEvent.getParameter("arguments");
         this._sObjectId = oArguments.objectId;
-
+        this._resetForm();
         if (this._sObjectId === "new") {
           this._openCreateProduct();
           this._setTitle(this._oResourceBundle.getText("addNewProduct"));
@@ -65,11 +64,6 @@ sap.ui.define(
           path: oNewProductCntx.getPath(),
           model: "ODataV2",
         });
-      },
-
-      onExit() {
-        const oModel = this.getModel("ODataV2");
-        oModel.resetChanges();
       },
 
       _openExistingProduct() {
@@ -170,10 +164,9 @@ sap.ui.define(
       },
 
       _resetForm() {
-        const oProductForm = this.byId("productForm");
-        const aInputs = oProductForm.getContent();
+        const aControls = sap.ui.getCore().byFieldGroupId("productUpdate");
 
-        aInputs.forEach(function (oControl) {
+        aControls.forEach(function (oControl) {
           if (oControl.getValueState) {
             oControl.setValueState("None");
           }
